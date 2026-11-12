@@ -1,4 +1,4 @@
-# 星梦智能助手
+# 星梦智能助手,AI写的小玩意
 
 星座星盘分析与周公解梦 Web 应用，包含注册 / 登录、两类 AI 分析与历史记录。
 
@@ -80,12 +80,10 @@ uv run ruff format --check app ../test/backend
 ## 目录结构
 
 ```text
-需求文档/      需求与用户故事（业务事实来源，仅本地保留）
-原型图/        视觉参考，不直接部署（仅本地保留）
-开发文档/      接口、数据库、任务拆解、验收报告（仅本地保留）
 backend/       FastAPI 后端
 frontend/      前端页面与脚本，由后端托管
-test/backend/  pytest 测试（仅本地保留）
+.gitignore
+README.md
 ```
 
 ## 已知限制
