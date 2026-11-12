@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>历史详情 · 星梦智能助手</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2l1.8 8.2L22 12l-8.2 1.8L12 22l-1.8-8.2L2 12l8.2-1.8z' fill='%238FB6D9'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body data-detail-type="zodiac">
+  <div class="sky" aria-hidden="true"></div>
+
+  <header class="nav">
+    <div class="nav-side">
+      <a class="brand" href="home.html" aria-label="返回主页面">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-opacity=".35"/>
+          <path d="M12 2v4M12 18v4M2 12h4M18 12h4" stroke="currentColor" stroke-opacity=".55" stroke-linecap="round"/>
+          <circle cx="12" cy="12" r="2.6" fill="currentColor"/>
+        </svg>
+        <span class="brand-name">星梦智能助手</span>
+      </a>
+      <span class="nav-divider" aria-hidden="true"></span>
+      <span class="nav-user" id="navUser" hidden><span class="avatar" id="navAvatar">?</span><span id="navUsername"></span></span>
+    </div>
+    <nav class="nav-actions" aria-label="账户导航">
+      <a class="nav-link" href="history.html">历史记录</a>
+      <a class="nav-link" id="logoutLink" href="auth.html">退出登录</a>
+    </nav>
+  </header>
+
+  <main class="page">
+    <a class="page-back" href="history.html" data-back-link>
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M19 12H5M11 6l-6 6 6 6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      返回历史记录
+    </a>
+
+    <div class="page-head">
+      <div>
+        <p class="eyebrow"><span class="eyebrow-dot"></span>ARCHIVE DETAIL</p>
+        <h1 class="page-title" id="pageTitle">星盘解读</h1>
+        <p class="page-desc" id="pageDesc">以下内容为生成时刻的完整结果快照，不重新计算。</p>
+      </div>
+      <div class="result-tags">
+        <span class="tag tag-zodiac">星座分析</span>
+        <span class="tag tag-plain">只读</span>
+      </div>
+    </div>
+
+    <p class="history-count" id="detailLoading">正在加载…</p>
+
+    <div class="history-list empty-state" id="detailError" hidden>
+      <p class="empty-title" id="detailErrorTitle">加载失败</p>
+      <p class="empty-sub" id="detailErrorMessage">加载失败，请稍后重试</p>
+      <button type="button" class="btn btn-ghost" id="detailRetry">重试</button>
+    </div>
+
+    <div class="detail-grid" id="detailGrid" hidden>
+      <aside class="card meta-card">
+        <h2>INPUT · 出生信息</h2>
+        <dl id="metaList"></dl>
+      </aside>
+
+      <article class="detail-result" id="detailResult">
+        <div class="result-tags">
+          <span class="tag tag-plain">REPORT · 个性化解读</span>
+        </div>
+        <h2 class="result-title" id="resultTitle"></h2>
+        <p class="result-sub" id="resultSub"></p>
+
+        <section class="r-section" style="margin-top: 24px">
+          <p class="r-label">性格特点</p>
+          <p class="prose" id="traitText"></p>
+        </section>
+
+        <section class="r-section">
+          <p class="r-label">未来一个月运势</p>
+          <div class="fortune-grid">
+            <div class="fortune">
+              <h3>事业</h3>
+              <p id="careerText"></p>
+            </div>
+            <div class="fortune">
+              <h3>感情</h3>
+              <p id="loveText"></p>
+            </div>
+            <div class="fortune">
+              <h3>健康</h3>
+              <p id="healthText"></p>
+            </div>
+          </div>
+        </section>
+
+        <section class="r-section">
+          <p class="r-label">幸运指引</p>
+          <div class="stat-grid">
+            <div class="stat">
+              <span class="swatch" id="luckSwatch" aria-hidden="true"></span>
+              <div>
+                <span class="stat-label">Lucky Color</span>
+                <span class="stat-value" id="luckColor"></span>
+              </div>
+            </div>
+            <div class="stat">
+              <span class="stat-number" id="luckNumber"></span>
+              <div>
+                <span class="stat-label">Lucky Number</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="r-section">
+          <p class="r-label">建议和提醒</p>
+          <ol class="advice" id="adviceList"></ol>
+        </section>
+
+        <p class="disclaimer">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.1"/>
+            <path d="M12 8h.01M11.2 11.5h1.6V16" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/>
+          </svg>
+          内容由 AI 生成，仅供娱乐参考。
+        </p>
+      </article>
+    </div>
+
+    <div class="detail-foot">
+      <a class="btn btn-ghost" href="history.html" data-back-link>返回历史记录</a>
+    </div>
+  </main>
+  <script type="module" src="js/history-detail.js"></script>
+  <script type="module" src="js/guard.js"></script>
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>登录 / 注册 · 星梦智能助手</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2l1.8 8.2L22 12l-8.2 1.8L12 22l-1.8-8.2L2 12l8.2-1.8z' fill='%238FB6D9'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="sky" aria-hidden="true"></div>
+
+  <main class="auth">
+    <!-- 左侧品牌区 -->
+    <section class="auth-left">
+      <div class="auth-brand">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-opacity=".35"/>
+          <path d="M12 2v4M12 18v4M2 12h4M18 12h4" stroke="currentColor" stroke-opacity=".55" stroke-linecap="round"/>
+          <circle cx="12" cy="12" r="2.6" fill="currentColor"/>
+        </svg>
+        <span>星梦智能助手</span>
+      </div>
+
+      <div class="auth-hero">
+        <p class="eyebrow"><span class="eyebrow-dot"></span>STELLAR OBSERVATORY</p>
+        <h1 class="auth-title">在星轨与<br>梦境之间</h1>
+        <p class="auth-tagline">读懂此刻的自己。</p>
+
+        <svg class="auth-chart" viewBox="0 0 460 240" fill="none" aria-hidden="true">
+          <ellipse cx="230" cy="120" rx="198" ry="102" stroke="currentColor" stroke-opacity=".07" stroke-dasharray="1 8"/>
+          <path d="M24 196L96 128L168 158L242 74L318 112L402 44" stroke="currentColor" stroke-opacity=".22"/>
+          <path d="M242 74L276 172L168 158" stroke="currentColor" stroke-opacity=".14"/>
+          <path d="M96 128L120 52" stroke="currentColor" stroke-opacity=".1"/>
+          <circle cx="242" cy="74" r="7" stroke="currentColor" stroke-opacity=".18"/>
+          <circle cx="242" cy="74" r="3.2" fill="currentColor" fill-opacity=".85"/>
+          <circle cx="24" cy="196" r="2.4" fill="currentColor" fill-opacity=".6"/>
+          <circle cx="96" cy="128" r="2" fill="currentColor" fill-opacity=".55"/>
+          <circle cx="168" cy="158" r="2.4" fill="currentColor" fill-opacity=".6"/>
+          <circle cx="318" cy="112" r="2" fill="currentColor" fill-opacity=".55"/>
+          <circle cx="402" cy="44" r="2.6" fill="currentColor" fill-opacity=".7"/>
+          <circle cx="276" cy="172" r="1.6" fill="currentColor" fill-opacity=".45"/>
+          <circle cx="120" cy="52" r="1.6" fill="currentColor" fill-opacity=".45"/>
+        </svg>
+      </div>
+
+      <div class="auth-meta">
+        <span>星座星盘分析</span><i></i><span>周公解梦</span><i></i><span>历史记录回溯</span>
+      </div>
+    </section>
+
+    <!-- 右侧表单区 -->
+    <section class="auth-right">
+      <div class="auth-card">
+        <div class="auth-tabs" role="tablist" aria-label="登录或注册">
+          <button class="auth-tab active" id="tabLogin" role="tab" aria-selected="true" aria-controls="panelLogin" type="button">登录</button>
+          <button class="auth-tab" id="tabRegister" role="tab" aria-selected="false" aria-controls="panelRegister" type="button">注册</button>
+          <span class="tab-ink" aria-hidden="true"></span>
+        </div>
+
+        <!-- 登录 -->
+        <div class="auth-panel active" id="panelLogin" role="tabpanel" aria-labelledby="tabLogin">
+          <h2 class="auth-heading">欢迎回来</h2>
+          <p class="auth-sub">使用用户名或邮箱，继续你的星象观测。</p>
+
+          <div class="notice-success" id="loginSuccess" hidden>注册成功，请使用新账号登录。</div>
+          <div class="notice-error" id="loginError" role="alert" hidden></div>
+
+          <form class="auth-form" id="loginForm" novalidate>
+            <div class="field">
+              <label for="loginAccount">账号</label>
+              <input type="text" id="loginAccount" placeholder="用户名或邮箱" autocomplete="username" maxlength="254">
+              <p class="field-error"></p>
+            </div>
+            <div class="field">
+              <label for="loginPassword">密码</label>
+              <input type="password" id="loginPassword" placeholder="请输入密码" autocomplete="current-password" maxlength="20">
+              <p class="field-error"></p>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block" id="loginSubmit">登 录</button>
+          </form>
+
+          <p class="auth-foot">还没有账号？<a href="#" data-switch="register">立即注册</a></p>
+        </div>
+
+        <!-- 注册 -->
+        <div class="auth-panel" id="panelRegister" role="tabpanel" aria-labelledby="tabRegister">
+          <h2 class="auth-heading">创建账号</h2>
+          <p class="auth-sub">注册后即可保存每一次星盘与梦境解读。</p>
+          <div class="notice-error" id="registerError" role="alert" hidden></div>
+
+          <form class="auth-form" id="registerForm" novalidate>
+            <div class="field">
+              <label for="regUsername">用户名</label>
+              <input type="text" id="regUsername" placeholder="3–20 位字母、数字、下划线" autocomplete="username" maxlength="20">
+              <p class="field-error"></p>
+            </div>
+            <div class="field">
+              <label for="regEmail">邮箱</label>
+              <input type="email" id="regEmail" placeholder="name@example.com" autocomplete="email" maxlength="254">
+              <p class="field-error"></p>
+            </div>
+            <div class="field">
+              <label for="regPassword">密码</label>
+              <input type="password" id="regPassword" placeholder="6–20 位字符，不含空格" autocomplete="new-password" maxlength="20">
+              <p class="field-error"></p>
+            </div>
+            <div class="field">
+              <label for="regConfirm">确认密码</label>
+              <input type="password" id="regConfirm" placeholder="请再次输入密码" autocomplete="new-password" maxlength="20">
+              <p class="field-error"></p>
+            </div>
+
+            <div class="field agree-field">
+              <label class="agree" for="regAgree">
+                <input type="checkbox" id="regAgree">
+                <span>我已阅读并同意 <a href="#" onclick="return false">《用户协议》</a> 与 <a href="#" onclick="return false">《隐私政策》</a></span>
+              </label>
+              <p class="field-error"></p>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block" id="registerSubmit">注 册</button>
+          </form>
+
+          <p class="auth-foot">已有账号？<a href="#" data-switch="login">立即登录</a></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="js/auth.js"></script>
+</body>
+</html>

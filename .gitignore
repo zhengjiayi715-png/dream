@@ -1,0 +1,33 @@
+# 环境变量与密钥（.env.example 为占位模板，需保留）
+.env
+.env.*
+!.env.example
+backend/.env
+
+# 数据库与运行时产物
+backend/data/*.db
+backend/data/*.db-wal
+backend/data/*.db-shm
+
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+
+# 不纳入仓库：测试、需求与开发文档、原型图、项目说明（仅本地保留）
+test/
+需求文档/
+开发文档/
+原型图/
+CLAUDE.md
+
+# 会话导出报告
+session-report-*.html
+
+# 编辑器与系统文件
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>星梦智能助手</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2l1.8 8.2L22 12l-8.2 1.8L12 22l-1.8-8.2L2 12l8.2-1.8z' fill='%238FB6D9'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="sky" aria-hidden="true"></div>
+
+  <header class="nav">
+    <div class="nav-side">
+      <a class="brand" href="home.html" aria-label="返回主页面">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-opacity=".35"/>
+          <path d="M12 2v4M12 18v4M2 12h4M18 12h4" stroke="currentColor" stroke-opacity=".55" stroke-linecap="round"/>
+          <circle cx="12" cy="12" r="2.6" fill="currentColor"/>
+        </svg>
+        <span class="brand-name">星梦智能助手</span>
+      </a>
+      <span class="nav-divider" aria-hidden="true"></span>
+      <span class="nav-user" id="navUser" title="" hidden><span class="avatar" id="navAvatar"></span><span id="navUsername"></span></span>
+    </div>
+    <nav class="nav-actions" aria-label="账户导航">
+      <a class="nav-link" href="history.html">历史记录</a>
+      <a class="nav-link" id="logoutLink" href="auth.html">退出登录</a>
+    </nav>
+  </header>
+
+  <main class="home-main">
+    <svg class="orbit" viewBox="0 0 900 900" fill="none" aria-hidden="true">
+      <g class="orbit-rot">
+        <circle cx="450" cy="450" r="430" stroke="currentColor" stroke-opacity=".1"/>
+        <circle cx="450" cy="450" r="430" stroke="currentColor" stroke-opacity=".13" stroke-dasharray="2 52"/>
+        <circle cx="450" cy="450" r="340" stroke="currentColor" stroke-opacity=".08" stroke-dasharray="1 18"/>
+        <circle cx="450" cy="450" r="240" stroke="currentColor" stroke-opacity=".1"/>
+        <circle cx="450" cy="450" r="240" stroke="currentColor" stroke-opacity=".07" stroke-dasharray="1 26"/>
+        <circle cx="450" cy="20" r="2.6" fill="currentColor" fill-opacity=".5"/>
+        <circle cx="450" cy="880" r="1.8" fill="currentColor" fill-opacity=".35"/>
+        <circle cx="110" cy="450" r="1.8" fill="currentColor" fill-opacity=".35"/>
+      </g>
+      <g stroke="currentColor" stroke-opacity=".16">
+        <path d="M606 214L650 268L718 240L748 300"/>
+        <path d="M650 268L678 338L748 300"/>
+        <path d="M152 646L206 682L190 736"/>
+      </g>
+      <g fill="currentColor" fill-opacity=".45">
+        <circle cx="606" cy="214" r="2"/>
+        <circle cx="650" cy="268" r="3"/>
+        <circle cx="718" cy="240" r="2"/>
+        <circle cx="748" cy="300" r="2.4"/>
+        <circle cx="678" cy="338" r="1.8"/>
+        <circle cx="152" cy="646" r="2"/>
+        <circle cx="206" cy="682" r="2.6"/>
+        <circle cx="190" cy="736" r="1.8"/>
+      </g>
+    </svg>
+
+    <div class="home-inner">
+      <p class="eyebrow"><span class="eyebrow-dot"></span>STELLAR OBSERVATORY</p>
+      <h1 class="hero-title">星梦智能助手</h1>
+      <p class="hero-sub">在星轨与梦境之间，读懂此刻的自己</p>
+      <span class="hero-rule" aria-hidden="true"></span>
+
+      <div class="feature-list">
+        <a class="feature-btn" href="zodiac.html">
+          <span class="feature-index">01</span>
+          <span class="feature-label">星座星盘分析</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a class="feature-btn" href="dream.html">
+          <span class="feature-index">02</span>
+          <span class="feature-label">周公解梦</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+
+      <p class="home-note">选择一项开始 · 每次解读都会保存至历史记录</p>
+    </div>
+
+    <p class="home-status"><span class="status-dot" aria-hidden="true"></span>SYSTEM ONLINE · 星象数据已同步</p>
+  </main>
+  <script type="module" src="js/home.js"></script>
+</body>
+</html>

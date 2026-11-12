@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>历史记录 · 星梦智能助手</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2l1.8 8.2L22 12l-8.2 1.8L12 22l-1.8-8.2L2 12l8.2-1.8z' fill='%238FB6D9'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="sky" aria-hidden="true"></div>
+
+  <header class="nav">
+    <div class="nav-side">
+      <a class="brand" href="home.html" aria-label="返回主页面">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-opacity=".35"/>
+          <path d="M12 2v4M12 18v4M2 12h4M18 12h4" stroke="currentColor" stroke-opacity=".55" stroke-linecap="round"/>
+          <circle cx="12" cy="12" r="2.6" fill="currentColor"/>
+        </svg>
+        <span class="brand-name">星梦智能助手</span>
+      </a>
+      <span class="nav-divider" aria-hidden="true"></span>
+      <span class="nav-user" id="navUser" hidden><span class="avatar" id="navAvatar">?</span><span id="navUsername"></span></span>
+    </div>
+    <nav class="nav-actions" aria-label="账户导航">
+      <a class="nav-link" href="history.html">历史记录</a>
+      <a class="nav-link" id="logoutLink" href="auth.html">退出登录</a>
+    </nav>
+  </header>
+
+  <main class="page">
+    <a class="page-back" href="home.html">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M19 12H5M11 6l-6 6 6 6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      返回主页面
+    </a>
+
+    <div class="page-head">
+      <div>
+        <p class="eyebrow"><span class="eyebrow-dot"></span>HISTORY ARCHIVE</p>
+        <h1 class="page-title">历史记录</h1>
+        <p class="page-desc">这里保存着你每一次成功生成的星座分析与梦境解读，按创建时间倒序排列，仅本人可见。</p>
+      </div>
+      <div class="page-meta">
+        SORT · CREATED DESC<br>
+        PAGE · TEN PER VIEW
+      </div>
+    </div>
+
+    <div class="history-bar">
+      <div class="filters" role="group" aria-label="按类型筛选">
+        <button type="button" class="filter active" data-filter="all">全部</button>
+        <button type="button" class="filter" data-filter="zodiac">星座分析</button>
+        <button type="button" class="filter" data-filter="dream">周公解梦</button>
+      </div>
+      <p class="history-count" id="historyCount">正在加载…</p>
+    </div>
+
+    <div class="history-list" id="historyList" hidden></div>
+
+    <!-- 加载骨架 -->
+    <div class="history-list" id="skeletonList" aria-hidden="true">
+      <div class="skeleton-row">
+        <span class="sk sk-tag"></span>
+        <span class="sk sk-line"></span>
+        <span class="sk sk-time"></span>
+      </div>
+      <div class="skeleton-row">
+        <span class="sk sk-tag"></span>
+        <span class="sk sk-line"></span>
+        <span class="sk sk-time"></span>
+      </div>
+      <div class="skeleton-row">
+        <span class="sk sk-tag"></span>
+        <span class="sk sk-line"></span>
+        <span class="sk sk-time"></span>
+      </div>
+      <div class="skeleton-row">
+        <span class="sk sk-tag"></span>
+        <span class="sk sk-line"></span>
+        <span class="sk sk-time"></span>
+      </div>
+    </div>
+
+    <!-- 空状态 -->
+    <div class="history-list empty-state" id="emptyState" hidden>
+      <svg class="empty-icon" width="46" height="46" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+        <circle cx="24" cy="24" r="19" stroke="currentColor" stroke-opacity=".5" stroke-dasharray="1 5"/>
+        <circle cx="24" cy="24" r="10" stroke="currentColor" stroke-opacity=".7"/>
+        <circle cx="24" cy="24" r="2" fill="currentColor"/>
+        <path d="M24 3v6M24 39v6M3 24h6M39 24h6" stroke="currentColor" stroke-opacity=".6"/>
+      </svg>
+      <p class="empty-title">暂无历史记录</p>
+      <p class="empty-sub">完成第一次星座分析或梦境解读后，记录会出现在这里。</p>
+      <a class="btn btn-ghost" href="home.html">去分析</a>
+    </div>
+
+    <!-- 加载失败 -->
+    <div class="history-list empty-state" id="errorState" hidden>
+      <p class="empty-title" id="errorTitle">加载失败</p>
+      <p class="empty-sub" id="errorMessage">加载失败，请稍后重试</p>
+      <button type="button" class="btn btn-ghost" id="retryBtn">重试</button>
+    </div>
+
+    <div class="pagination" id="pagination" hidden>
+      <p class="page-info" id="pageInfo"></p>
+      <div class="pager" id="pager"></div>
+    </div>
+  </main>
+
+  <script type="module" src="js/history.js"></script>
+  <script type="module" src="js/guard.js"></script>
+</body>
+</html>

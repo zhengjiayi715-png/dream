@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>星座星盘分析 · 星梦智能助手</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2l1.8 8.2L22 12l-8.2 1.8L12 22l-1.8-8.2L2 12l8.2-1.8z' fill='%238FB6D9'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="sky" aria-hidden="true"></div>
+
+  <header class="nav">
+    <div class="nav-side">
+      <a class="brand" href="home.html" aria-label="返回主页面">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-opacity=".35"/>
+          <path d="M12 2v4M12 18v4M2 12h4M18 12h4" stroke="currentColor" stroke-opacity=".55" stroke-linecap="round"/>
+          <circle cx="12" cy="12" r="2.6" fill="currentColor"/>
+        </svg>
+        <span class="brand-name">星梦智能助手</span>
+      </a>
+      <span class="nav-divider" aria-hidden="true"></span>
+      <span class="nav-user" id="navUser" hidden><span class="avatar" id="navAvatar">?</span><span id="navUsername"></span></span>
+    </div>
+    <nav class="nav-actions" aria-label="账户导航">
+      <a class="nav-link" href="history.html">历史记录</a>
+      <a class="nav-link" id="logoutLink" href="auth.html">退出登录</a>
+    </nav>
+  </header>
+
+  <main class="page">
+    <a class="page-back" href="home.html">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M19 12H5M11 6l-6 6 6 6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      返回主页面
+    </a>
+
+    <div class="page-head">
+      <div>
+        <p class="eyebrow"><span class="eyebrow-dot"></span>ZODIAC ANALYSIS</p>
+        <h1 class="page-title">星座星盘分析</h1>
+        <p class="page-desc">填写出生信息与当前状态，系统将结合星盘计算结果与你的个人背景，生成一份专属解读。</p>
+      </div>
+      <div class="page-meta">
+        GENERATION · ≤ 10S<br>
+        RECORDS · AUTO SAVED
+      </div>
+    </div>
+
+    <!-- 表单 -->
+    <section class="card form-card" id="formCard">
+      <div class="card-head">
+        <h2>出生信息</h2>
+        <button type="button" class="text-btn" id="fillSample">填入示例数据</button>
+      </div>
+
+      <form id="zodiacForm" novalidate>
+        <div class="form-grid">
+          <div class="field span-2">
+            <label>出生日期 <span class="req">*</span></label>
+            <div class="split-3">
+              <select id="birthYear" aria-label="出生年份" required>
+                <option value="">年</option>
+              </select>
+              <select id="birthMonth" aria-label="出生月份" required>
+                <option value="">月</option>
+              </select>
+              <select id="birthDay" aria-label="出生日期" required>
+                <option value="">日</option>
+              </select>
+            </div>
+            <p class="field-error"></p>
+          </div>
+
+          <div class="field">
+            <label>出生时间 <span class="req">*</span></label>
+            <div class="split-2">
+              <select id="birthHour" aria-label="出生小时" required>
+                <option value="">时</option>
+              </select>
+              <select id="birthMinute" aria-label="出生分钟" required>
+                <option value="">分</option>
+              </select>
+            </div>
+            <p class="field-error"></p>
+          </div>
+
+          <div class="field">
+            <label for="birthPlace">出生地点 <span class="req">*</span></label>
+            <input type="text" id="birthPlace" maxlength="50" placeholder="如：上海">
+            <p class="field-error"></p>
+          </div>
+
+          <div class="field">
+            <label for="gender">性别 <span class="req">*</span></label>
+            <select id="gender" required>
+              <option value="">请选择</option>
+              <option value="male">男</option>
+              <option value="female">女</option>
+            </select>
+            <p class="field-error"></p>
+          </div>
+
+          <div class="field">
+            <label for="relation">情感状态 <span class="req">*</span></label>
+            <select id="relation" required>
+              <option value="">请选择</option>
+              <option value="single">单身</option>
+              <option value="dating">恋爱</option>
+              <option value="married">已婚</option>
+            </select>
+            <p class="field-error"></p>
+          </div>
+
+          <div class="field">
+            <label for="job">职业身份 <span class="req">*</span></label>
+            <input type="text" id="job" maxlength="30" placeholder="如：产品经理">
+            <p class="field-error"></p>
+          </div>
+
+          <div class="field">
+            <label for="focus">测算关注点 <span class="req">*</span></label>
+            <input type="text" id="focus" maxlength="100" placeholder="如性格、事业、情感等">
+            <p class="field-error"></p>
+          </div>
+        </div>
+
+        <p class="notice-error" id="formError" role="alert" hidden></p>
+
+        <div class="form-actions">
+          <p class="form-note">提交后约需 10 秒生成 · 结果将自动保存至历史记录</p>
+          <button type="submit" class="btn btn-primary" id="zodiacSubmit">开始分析</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- 生成中 -->
+    <section class="gen-card" id="loadingCard" hidden>
+      <div class="gen-ring" aria-hidden="true"></div>
+      <p class="gen-title">正在为你生成专属星盘解读，请稍候…</p>
+      <p class="gen-sub">正在校准星象数据 · 结合出生信息与关注点</p>
+      <div class="gen-line" aria-hidden="true"></div>
+    </section>
+
+    <!-- 结果 -->
+    <article class="result" id="resultCard" hidden>
+      <header class="result-head">
+        <div>
+          <div class="result-tags">
+            <span class="tag tag-zodiac">星座分析</span>
+            <span class="tag tag-plain" id="resultTime">2026-11-12 09:42</span>
+          </div>
+          <h2 class="result-title" id="resultTitle">你的星座：狮子座</h2>
+          <p class="result-sub" id="resultSub">生于 1996 年 8 月 1 日 08:30 · 上海</p>
+          <p class="result-focus" id="resultFocus">本次关注 · <b>事业与自我成长</b></p>
+        </div>
+        <svg class="result-emblem" width="86" height="86" viewBox="0 0 86 86" fill="none" aria-hidden="true">
+          <circle cx="43" cy="43" r="40" stroke="currentColor" stroke-opacity=".22" stroke-dasharray="1 6"/>
+          <circle cx="43" cy="43" r="28" stroke="currentColor" stroke-opacity=".35"/>
+          <path d="M43 3v10M43 73v10M3 43h10M73 43h10" stroke="currentColor" stroke-opacity=".45"/>
+          <path d="M43 15l4 24 24 4-24 4-4 24-4-24-24-4 24-4z" stroke="currentColor" stroke-opacity=".16"/>
+          <circle cx="43" cy="43" r="3" fill="currentColor"/>
+        </svg>
+      </header>
+
+      <div class="result-body">
+        <section class="r-section">
+          <p class="r-label">性格特点</p>
+          <p class="prose" id="traitText">你身上有一种不张扬但持续发光的能量。太阳守护下的狮子座，习惯把热情投入到具体的事情里——在团队中，你常常是那个把模糊目标拆成清晰路径的人。你重视被看见，也越来越懂得，真正的认可来自作品本身，而不是掌声。偶尔的自我怀疑并不会削弱你，它只是提醒你：慢一点，也是在积蓄光。</p>
+        </section>
+
+        <section class="r-section">
+          <p class="r-label">未来一个月运势</p>
+          <div class="fortune-grid">
+            <div class="fortune">
+              <h3>事业</h3>
+              <p id="careerText">未来一个月，适合推进一件你已准备已久的项目。身为产品经理，上半月信息较多，留意关键人物的反馈；下半月节奏加快，你的表达优势会被放大。避免一个人扛下所有环节，适当交托，反而更快。</p>
+            </div>
+            <div class="fortune">
+              <h3>感情</h3>
+              <p id="relationText">单身状态下，你更清楚自己想要怎样的相处方式。月中之后，容易在熟悉的圈子里遇见让你放松的人；不必急于定义关系，先享受自然的靠近。</p>
+            </div>
+            <div class="fortune">
+              <h3>健康</h3>
+              <p id="healthText">注意久坐带来的肩颈紧张，工作间隙起身走动。睡眠比平时更需要被认真对待，睡前一小时放下屏幕，会让你的状态更稳定。</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="r-section">
+          <p class="r-label">幸运指引</p>
+          <div class="stat-grid">
+            <div class="stat">
+              <span class="swatch" id="luckSwatch" style="--c: #2e4a6b" aria-hidden="true"></span>
+              <div>
+                <span class="stat-label">Lucky Color</span>
+                <span class="stat-value" id="luckColor">深海蓝</span>
+              </div>
+            </div>
+            <div class="stat">
+              <span class="stat-number" id="luckNumber">07</span>
+              <div>
+                <span class="stat-label">Lucky Number</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="r-section">
+          <p class="r-label">建议和提醒</p>
+          <ol class="advice" id="adviceList"></ol>
+        </section>
+
+        <p class="disclaimer">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.1"/>
+            <path d="M12 8h.01M11.2 11.5h1.6V16" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/>
+          </svg>
+          内容由 AI 生成，仅供娱乐参考。
+        </p>
+      </div>
+
+      <div class="result-actions">
+        <a class="btn btn-ghost" href="home.html">返回主页面</a>
+        <button type="button" class="btn btn-primary" id="againBtn">重新分析</button>
+      </div>
+    </article>
+  </main>
+
+  <script type="module" src="js/zodiac.js"></script>
+  <script type="module" src="js/guard.js"></script>
+</body>
+</html>
